@@ -8,8 +8,8 @@ def get_stats():
     return zip(getattr(settings, 'VARNISH_MANAGEMENT_ADDRS', ()), stats)
     
 def management(request): 
-    if not request.user.is_superuser:
-        return HttpResponseRedirect('/admin/')
+    #if not request.user.is_superuser:
+    #    return HttpResponseRedirect('/admin/')
     if 'command' in request.REQUEST:
         kwargs = dict(request.REQUEST.items())
         manager.run(*str(kwargs.pop('command')).split(), **kwargs)
